@@ -1,5 +1,28 @@
 // define our packages
 
+// npm install express
+const express = require('express');
+
+// how to install?
+//documentation
+// what does this do?
+const exphbs = require('express-handlebars');
+
+// how to install?
+//documentation
+// what does this do?
+const bodyParser = require('body-parser');
+
+// how to install?
+//documentation
+// what does this do?
+const session = require('express-session');
+
+// how to install?
+//documentation
+// what does this do?
+const mongoose = require('mongoose');
+
 // third party promise library
 // documentation https://www.npmjs.com/package/bluebird
 // and http://bluebirdjs.com/
@@ -7,26 +30,82 @@
 const bluebird = require('bluebird');
 mongoose.Promise = bluebird; // what is happening here?
 
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+// routes ==================== add comentary
+const createRoutes = require('./routes/createRoutes');
 
-var Cat = mongoose.model('Cat', { name: String });
+const loginRoutes = require('./routes/loginForm');
 
-var kitty = new Cat({ name: 'Zildjian' });
-kitty.save(function (err) {
-  if (err) {
-    console.log(err);
+// models ==================== add comentary
+const User = require('./models/login');
+
+const Snippet = require('./models/snippets');
+
+// express app  ==================== add comentary
+const app = express();
+
+app.use(express.static('public'));
+
+app.engine('handlebars', exphbs());
+app.set('views', './views');
+app.set('view engine', 'handlebars');
+
+// ==================== add comentary
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(
+  session({
+    secret: 'password',
+    resave: false,
+    saveUninitialized: true
+  })
+);
+
+// what is this and why?
+let url = 'mongodb://localhost:27017/newdb';
+
+// what is this and why?
+app.use('/', loginRoutes);
+
+// add the snippet
+// what is this and why?
+app.use('/addSnippet', createRoutes);
+
+const requireLogin = (req,res, next) => {
+  if (req.user) {
+    next();
   } else {
-    console.log('meow');
+    console.log('You are not logged in. You are being redirected to the login page.');
   }
+};
+
+// how is the then and catch working here?
+app.get('/', requireLogin, function(req, res) {
+  Snippet.find()
+  .then((snippets) => {
+    res.render('home', {user: req.user,
+    snippets: snippets})
+  })
+  .catch(err => res.send('nope'))
 });
 
-// use routes
-
-//  app.use code
-
-//render home page
-
-//remove
+// delete the snippet
+app.get('/deleteSnippet', (req. res) => {
+  Snippet.findById(req.query.id)
+  .remove()
+  .then() => res.redirect('/'));
+});
 
 // logout
+app.get('/logout', function(req, res) {
+  req.logout();
+  res.redirect('/login');
+});
+
+// connect to mongo using mongoose
+mongoose
+.connect('mongodb://localhost:27017/newdb', {
+  useMongoClient: true
+})
+.then() => app.listen(3000, () =>
+console.log("You are connected.")));
