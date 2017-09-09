@@ -10,22 +10,14 @@ const bodyParser = require('body-parser');
 routes.use(bodyParser.json());
 routes.use(bodyParser.urlencoded({
 extended: false
-})));
+}));
 
 // search page
-routes.get('/serch', (req.res) => {
+routes.get('/search', (req, res) => {
   let search = req.query.mySearch;
-  Snippet.find({
-      $or: [{
-        language: search
-      }, {
-        tags: search
-      }]
-    })
-    .then(snippets) => res.render('search', {
-      snippets: snkippets
-    }))
-.catch(err => res.send('nope'))
+  Snippet.find({$or: [{language: search}, {tags: search}]})
+  .then(snippets => res.render('search', {snippets: snippets}))
+  .catch(err =>res.send('nope'))
 });
 
 // create routes.get

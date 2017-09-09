@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 const userSchema = new Schema({
   username:{type:String, required: true},
-  password: (type:String,required: true},
+  password: {type:String,required: true},
   passwordHash: {type: String}
 });
 
-userSchema.methods..setPassword = function(password) {
+userSchema.methods.setPassword = function(password) {
   this.passwordHash = bcrypt.hashSync(password, 8);
 };
 
