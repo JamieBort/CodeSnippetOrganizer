@@ -21,6 +21,7 @@ const session = require('express-session');
 // how to install?
 //documentation
 // what does this do?
+// npm install mongoose
 const mongoose = require('mongoose');
 
 // third party promise library
@@ -72,11 +73,12 @@ app.use('/', loginRoutes);
 // what is this and why?
 app.use('/addSnippet', createRoutes);
 
-const requireLogin = (req,res, next) => {
+const requireLogin = (req, res, next) => {
   if (req.user) {
     next();
   } else {
-    console.log('You are not logged in. You are being redirected to the login page.');
+    console.log('You are not logged in. You are being redirected to the login page.')
+    res.redirect('/login');
   }
 };
 
@@ -92,11 +94,11 @@ app.get('/', requireLogin, function(req, res) {
 });
 
 // delete the snippet
-// app.get('/deleteSnippet', (req, res) => {
-//   Snippet.findById(req.query.id)
-//   .remove()
-//   .then() => res.redirect('/'));
-// });
+app.get('/deleteSnippet', (req, res) => {
+  Snippet.findById(req.query.id)
+  .remove()
+  .then(() => res.redirect('/'));
+});
 
 // logout
 app.get('/logout', function(req, res) {
@@ -107,4 +109,4 @@ app.get('/logout', function(req, res) {
 // connect to mongo via mongoose
 mongoose
   .connect('mongodb://localhost:27017/newdb', { useMongoClient: true })
-  .then(() => app.listen(3000, () => console.log('ready to roll!!')));
+  .then(() => app.listen(3000, () => console.log('ready to roll on port 3000!!')));

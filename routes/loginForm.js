@@ -32,9 +32,11 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 
 // what does this do?
+// npm install passport
 const passport = require('passport');
 
 // what does this do?
+// npm install passport-local
 const LocalStrategy = require('passport-local').Strategy;
 
 // routes.use
@@ -57,7 +59,7 @@ routes.use(bodyParser.urlencoded({extended:false}));
 passport.use(
   new LocalStrategy(function(username, password, done) {
     console.log('LocalStrategy', username, password);
-  User.authentication(username, password)
+  User.authenticate(username, password)
 .then(user => {
   if (user) {
     done(null, user);
@@ -71,7 +73,7 @@ passport.use(
 
 // store user's id in session
 passport.serializeUser((user,done) => {
-  done(null, user.id);
+  done(null, user._id);
 });
 
 // obtain user from session base
@@ -97,16 +99,16 @@ routes.post(
 // register page
 // waht's going on here?
 routes.get('/signup', (reg, res) => {
-  res.redner('register');
+  res.render('register');
 });
 
 // waht's going on here?
-reoutes.post('/signin', (req, res) => {
+routes.post('/signin', (req, res) => {
   let user = new User(req.body);
   user.provider = 'local';
   user.setPassword(req.body.password);
 
-// waht's going on here?
+// what's going on here?
   user
   .save()
   .then(() => res.redirect('/'))
