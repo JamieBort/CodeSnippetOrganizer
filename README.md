@@ -1,6 +1,8 @@
-from: https://newline.theironyard.com/cohorts/15/courses/10/projects/91
+# Code Snippet Organizer
 
-**Code Snippet Organizer**
+From [The Iron Yard](https://newline.theironyard.com/cohorts/15/courses/10/projects/91)
+
+## Instructions
 Build an organizer for holding your and others' code snippets.
 
 Using Express and Mongoose, create an application that organizes code snippets that you save for later use.
@@ -25,7 +27,7 @@ Your application must:
 * have an API to allow for creating and viewing of snippets as listed above
 
 
-**Advanced activities**
+### Advanced activities
 
 Optimally, your snippet organizer should let people not only look at their own snippets, but also look at others' snippets. If you get to this part, your application should:
 
@@ -35,3 +37,6 @@ Optimally, your snippet organizer should let people not only look at their own s
 * allow you to view all snippets site-wide for a specific tag
 * allow you to "star" or favorite other people's snippets
 * allow you to sort snippets by date created or updated, and by number of stars
+
+How to run this program:
+(See the comments in the [index.js](https://github.com/JamieBort/CodeSnippetOrganizer/blob/master/index.js) file.)
