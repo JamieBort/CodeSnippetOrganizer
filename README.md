@@ -38,5 +38,5 @@ Optimally, your snippet organizer should let people not only look at their own s
 * allow you to "star" or favorite other people's snippets
 * allow you to sort snippets by date created or updated, and by number of stars
 
-How to run this program:
+### How to run this program:
 (See the comments in the [index.js](https://github.com/JamieBort/CodeSnippetOrganizer/blob/master/index.js) file.)
