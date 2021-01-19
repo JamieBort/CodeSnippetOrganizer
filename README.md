@@ -2,6 +2,8 @@
 
 From [The Iron Yard](https://newline.theironyard.com/cohorts/15/courses/10/projects/91)
 
+See also: https://trello.com/c/bwxdXi6G/794-code-snippet-organizer
+
 ## Instructions
 Build an organizer for holding your and others' code snippets.
 
