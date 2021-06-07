@@ -4,6 +4,8 @@ From [The Iron Yard](https://newline.theironyard.com/cohorts/15/courses/10/proje
 
 See also: https://trello.com/c/bwxdXi6G/794-code-snippet-organizer
 
+Fix this up for the portfolio website: https://github.com/JamieBort/jamiebort.github.io/
+
 For reference
 * https://github.com/victoriarainc/CodeSnippets
 * and https://github.com/sethcarrino/code-snippet-organizer
