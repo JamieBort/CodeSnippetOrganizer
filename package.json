@@ -1,0 +1,29 @@
+{
+  "name": "codesnippetorganizer",
+  "version": "1.0.0",
+  "description": "From [The Iron Yard](https://newline.theironyard.com/cohorts/15/courses/10/projects/91)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamieBort/CodeSnippetOrganizer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamieBort/CodeSnippetOrganizer/issues"
+  },
+  "homepage": "https://github.com/JamieBort/CodeSnippetOrganizer#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-flash-messages": "^0.1.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.10.17",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}

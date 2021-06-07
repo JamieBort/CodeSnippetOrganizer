@@ -17,6 +17,7 @@ const User = require('../models/login');
 const Snippet = require('../models/snippets');
 
 // what does this do?
+// npm install express-flash-messages
 // documentation?
 // how to install?
 const flash = require('express-flash-messages');

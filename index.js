@@ -4,6 +4,7 @@
 const express = require('express');
 
 // how to install?
+// npm install express-handlebars
 //documentation
 // what does this do?
 const exphbs = require('express-handlebars');
@@ -14,11 +15,13 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 
 // how to install?
+// npm install express-session
 //documentation
 // what does this do?
 const session = require('express-session');
 
 // how to install?
+// npm install mongoose
 //documentation
 // what does this do?
 // npm install mongoose
